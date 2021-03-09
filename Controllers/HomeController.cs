@@ -68,23 +68,16 @@ namespace AspNetCoreMVC.Controllers
             SentrySdk.ConfigureScope(scope => {
                 scope.SetTag("CustomerType","Enterprise");
             });
-            _logger.LogInformation("This leg information is added as a breadcrumb");
+            _logger.LogInformation("This log entry is added as a breadcrumb");
             
             try
             {
-                //int value = 1 / int.Parse("0");
-
-                Dim testArray As String() = {"a", "b"};
-                testArray(2);
+                string[] weekDays = new string[7] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+                Console.WriteLine( weekDays[7]); 
             }
             catch (Exception exception){
-                // exception.Data.Add("detail",
-                //     new
-                //     {
-                //         Reason = "There's a 'throw null' hard-coded in the try block"
-                //     });
-
-                _logger.LogError(exception, "handled error");
+                //System.IndexOutOfRangeException
+                _logger.LogError(exception, "This log entry is added as error.");
             }
             return "SUCCESS: back-end error handled gracefully";
         }
@@ -93,8 +86,15 @@ namespace AspNetCoreMVC.Controllers
         [HttpGet("unhandled")]
         public string Unhandled()
         {
+            SentrySdk.ConfigureScope(scope => {
+                scope.SetTag("CustomerType","Enterprise");
+            });
+            _logger.LogInformation("This log entry is added as a breadcrumb");
+
             int n1 = 1;
             int n2 = 0;
+
+            //System.DivideByZeroException
             int ans = n1 / n2;
 
             return "FAILURE: Server-side Error";
