@@ -53,7 +53,7 @@ namespace AspNetCoreMVC
             
             app.UseCors();
             app.UseRouting();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
