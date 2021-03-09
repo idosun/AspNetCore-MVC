@@ -65,8 +65,13 @@ namespace AspNetCoreMVC.Controllers
         [HttpGet("handled")]
         public string Handled()
         {
+
             SentrySdk.ConfigureScope(scope => {
                 scope.SetTag("CustomerType","Enterprise");
+                scope.User = new User
+                {
+                    Email = "john.doe@example.com"
+                };
             });
             _logger.LogInformation("This log entry is added as a breadcrumb");
             
@@ -88,6 +93,10 @@ namespace AspNetCoreMVC.Controllers
         {
             SentrySdk.ConfigureScope(scope => {
                 scope.SetTag("CustomerType","Enterprise");
+                scope.User = new User
+                {
+                    Email = "john.doe@example.com"
+                };
             });
             _logger.LogInformation("This log entry is added as a breadcrumb");
 
