@@ -72,7 +72,7 @@ namespace AspNetCoreMVC.Controllers
             
             try
             {
-                int value = 1 / int.Parse("0");
+                //int value = 1 / int.Parse("0");
 
                 Dim testArray As String() = {"a", "b"};
                 testArray(2);
