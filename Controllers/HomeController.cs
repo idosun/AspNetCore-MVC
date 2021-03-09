@@ -65,24 +65,24 @@ namespace AspNetCoreMVC.Controllers
         [HttpGet("handled")]
         public string Handled()
         {
+            SentrySdk.ConfigureScope(scope => {
+                scope.SetTag("CustomerType","Enterprise");
+            });
+            _logger.LogInformation("This leg information is added as a breadcrumb");
             
             try
             {
-                SentrySdk.ConfigureScope(scope => {
-                scope.SetTag("CustomerType","Enterprise");
-                });
-                _logger.LogInformation("My custom breadcrumb");
-                //implement another fix
-                throw null;
+                int value = 1 / int.Parse("0");
+
+                Dim testArray As String() = {"a", "b"};
+                testArray(2);
             }
-            catch (Exception exception)
-            //add a custom tag, add breadcrumb
-            {
-                exception.Data.Add("detail",
-                    new
-                    {
-                        Reason = "There's a 'throw null' hard-coded in the try block"
-                    });
+            catch (Exception exception){
+                // exception.Data.Add("detail",
+                //     new
+                //     {
+                //         Reason = "There's a 'throw null' hard-coded in the try block"
+                //     });
 
                 _logger.LogError(exception, "handled error");
             }
@@ -96,6 +96,7 @@ namespace AspNetCoreMVC.Controllers
             int n1 = 1;
             int n2 = 0;
             int ans = n1 / n2;
+
             return "FAILURE: Server-side Error";
         }
     }
