@@ -68,7 +68,7 @@ namespace AspNetCoreMVC.Controllers
 
             SentrySdk.ConfigureScope(scope => {
                 scope.SetTag("CustomerType","Enterprise");
-                scope.User = new User
+                scope.User = new Sentry.Protocol.User
                 {
                     Email = "john.doe@example.com"
                 };
@@ -93,7 +93,7 @@ namespace AspNetCoreMVC.Controllers
         {
             SentrySdk.ConfigureScope(scope => {
                 scope.SetTag("CustomerType","Enterprise");
-                scope.User = new User
+                scope.User = new Sentry.Protocol.User
                 {
                     Email = "john.doe@example.com"
                 };
