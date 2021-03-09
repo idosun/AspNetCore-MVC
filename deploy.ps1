@@ -1,5 +1,5 @@
 $sentry_org="testorg-az"
-$sentry_project="aspnet-core-rw"
+$sentry_project="idos-aspnet-core"
 $version=sentry-cli releases propose-version
 
 #Create Release

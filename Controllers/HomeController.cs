@@ -24,7 +24,7 @@ namespace AspNetCoreMVC.Controllers
 
         private void Checkout(List<Item> cart)
         {
-            _logger.LogInformation("*********** BEFORE {inventory}", Store.inventory);
+            _logger.LogInformation("*********** Inventory before: {inventory}", Store.inventory);
             var tempInventory = Store.inventory;
             foreach (var item in cart)
             {
@@ -38,7 +38,7 @@ namespace AspNetCoreMVC.Controllers
                 }
             }
             Store.inventory = tempInventory;
-            _logger.LogInformation("*********** AFTER {inventory}", Store.inventory);
+            _logger.LogInformation("*********** Inventory after: {inventory}", Store.inventory);
         }
 
         [HttpPost("checkout")]
